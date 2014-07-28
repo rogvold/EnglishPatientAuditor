@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <script src="https://www.webrtc-experiment.com/RecordRTC.js"> </script>
+    <script src="../js/jquery.js"> </script>
+
+    <title></title>
+</head>
+<body>
+
+<section class="experiment">
+    <h2 class="header">Record Audio (both Chrome/Firefox)</h2>
+
+    <div class="inner" style="height: 5em;">
+        <audio id="audio" autoplay="" controls=""></audio>
+        <button id="record-audio">Record</button>
+        <button id="stop-recording-audio" disabled="">Stop</button>
+        <h2 id="audio-url-preview"></h2>
+        <button id="uploadButton" disabled="" >
+            upload!
+        </button>
+        <progress id="progress" ></progress>
+        <strong id="percentage"></strong>
+    </div>
+</section>
+
+<script>
+
+    function getByID(id) {
+        return document.getElementById(id);
+    }
+
+    var recordAudio = getByID('record-audio'),
+            stopRecordingAudio = getByID('stop-recording-audio'), uploadButton = getByID('uploadButton');
+    var audio = getByID('audio');
+    var progress = getByID('progress');
+    var audioConstraints = {
+        audio: true,
+        video: false
+    };
+    var audioStream;
+    recordAudio.onclick = function() {
+        if (!audioStream)
+            navigator.getUserMedia(audioConstraints, function(stream) {
+                if (window.IsChrome) stream = new window.MediaStream(stream.getAudioTracks());
+                audioStream = stream;
+
+                audio.src = URL.createObjectURL(audioStream);
+                audio.muted = true;
+                audio.play();
+
+                // "audio" is a default type
+                recorder = window.RecordRTC(stream, {
+                    type: 'audio'
+                });
+                recorder.startRecording();
+            }, function() {
+            });
+        else {
+            audio.src = URL.createObjectURL(audioStream);
+            audio.muted = true;
+            audio.play();
+            if (recorder) recorder.startRecording();
+        }
+
+        window.isAudio = true;
+
+        this.disabled = true;
+        stopRecordingAudio.disabled = false;
+    };
+
+    stopRecordingAudio.onclick = function() {
+        this.disabled = true;
+        recordAudio.disabled = false;
+        audio.src = '';
+
+        if (recorder)
+            recorder.stopRecording(function(url) {
+                audio.src = url;
+                audio.muted = false;
+                audio.play();
+                document.getElementById('audio-url-preview').innerHTML = '<a href="' + url + '" target="_blank">Recorded Audio URL</a>';
+
+                var fileName = '' + (new Date()).getTime();
+                PostBlob(recorder.getBlob(), 'audio', fileName + '.wav');
+            });
+
+    };
+
+
+    function xhr(url, data, progress, percentage, callback) {
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function() {
+            if (request.readyState == 4 && request.status == 200) {
+                callback(request.responseText);
+            }
+        };
+
+        if(url.indexOf('delete.php') == -1) {
+            request.upload.onloadstart = function() {
+                percentage.innerHTML = 'Upload started...';
+            };
+
+            request.upload.onprogress = function(event) {
+                progress.max = event.total;
+                progress.value = event.loaded;
+                percentage.innerHTML = 'Upload Progress ' + Math.round(event.loaded / event.total * 100) + "%";
+            };
+
+            request.upload.onload = function() {
+                percentage.innerHTML = 'Saved!';
+            };
+        }
+
+        request.open('POST', url);
+        request.send(data);
+    }
+
+    function PostBlob(blob, fileType, fileName) {
+        // FormData
+        var formData = new FormData();
+        formData.append(fileType + '-filename', fileName);
+        formData.append(fileType + '-blob', blob);
+
+        // progress-bar
+//        var strong = document.createElement('strong');
+//        strong.id = 'percentage';
+//        strong.innerHTML = fileType + ' upload progress: ';
+//        container.appendChild(strong);
+//        var progress = document.createElement('progress');
+//        container.appendChild(progress);
+
+        // POST the Blob using XHR2
+        xhr('save.php', formData, progress, percentage, function(fileURL) {
+
+            var mediaElement = document.createElement(fileType);
+
+            var source = document.createElement('source');
+            var href = location.href.substr(0, location.href.lastIndexOf('/') + 1);
+            source.src = href + fileURL;
+
+            if(fileType == 'video') source.type = 'video/webm; codecs="vp8, vorbis"';
+            if(fileType == 'audio') source.type = !!navigator.mozGetUserMedia ? 'audio/ogg': 'audio/wav';
+
+            mediaElement.appendChild(source);
+
+            mediaElement.controls = true;
+//            container.appendChild(mediaElement);
+            mediaElement.play();
+
+//            progress.parentNode.removeChild(progress);
+//            strong.parentNode.removeChild(strong);
+//            hr.parentNode.removeChild(hr);
+        });
+
+
+
+    }
+
+    function testUpload(){
+        var fileName = '' + (new Date()).getTime();
+        PostBlob(recorder.getBlob(), 'audio', fileName + '.wav');
+    }
+
+
+</script>
+
+
+<script>
+
+    // PostBlob method uses XHR2 and FormData to submit
+    // recorded blob to the PHP server
+
+
+</script>
+
+</body>
+</html>
