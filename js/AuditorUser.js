@@ -142,7 +142,7 @@ var UserTools = function(){
 
     this.loadAuditorUserExercise = function(){
         var exId = gup('id');
-        if (exId == undefined){
+        if (exId == undefined || exId == ''){
             window.location.href = 'classes.html';
             return;
         }
@@ -157,7 +157,7 @@ var UserTools = function(){
                 self.currentUserAnswers = result.userAnswers;
                 self.currentExerciseItemNumber = 0;
                 console.log(self.currentAuditorUserExercise);
-                console.log(self.userAnswers);
+
                 $('.className').text(result.exercise.get('name'));
                 $('.classDescription').text(result.exercise.get('description'));
                 self.generateExerciseNumbersBlock(self.answerItemSelected);
@@ -257,7 +257,12 @@ var UserTools = function(){
             }
             var ans = self.currentUserAnswers[self.currentExerciseItemNumber];
             var fileName = ans.id + (new Date()).getTime();
+            $(this).text('saving...');
+            $(this).attr('disabled', 'disabled');
             self.audioManager.uploadAudio(fileName, function(){
+                $('#saveButton').text('Save');
+                $('#saveButton').removeAttr('disabled');
+                $('#saveButton').hide();
                 ans.set('audioLink', fileName);
                 ans.set('status', 'answered');
                 ans.save().then(function(savedAns){

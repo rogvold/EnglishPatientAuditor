@@ -24,6 +24,12 @@ var AudioManager = function(){
     this.onRecordingFinished = undefined;
     this.onRecordingStarted = undefined;
 
+    this.timerIntervalId = undefined;
+    this.recordingTime = 0;
+    this.interval = 200;
+
+    this.maxRecordingTime = 15*1000;
+
     //statuses: recordingIsNotStarted, recording, recordingFinished
 
     this.init = function(){
@@ -38,6 +44,30 @@ var AudioManager = function(){
     this.initHtmlBindings = function(){
         self.initRecordButton();
         self.initStopRecordingButton();
+        self.initTimer();
+    }
+
+    this.initTimer = function(){
+        self.timerIntervalId = setInterval(function(){
+            if (self.status == 'recording'){
+                if (self.recordingTime == self.maxRecordingTime){
+                    $('#stopRecordingAudioButton').click();
+                }
+                self.recordingTime += self.interval;
+                $('#recordingTimer').show();
+                $('#recordingTimer').text(Math.floor(self.recordingTime / 1000.0));
+                if (self.recordingTime % (3*self.interval) == 0){
+                    $('#recordingTimer').addClass('light');
+                }else{
+                    $('#recordingTimer').removeClass('light');
+                }
+
+            }else{
+                self.recordingTime = 0;
+                $('#recordingTimer').hide();
+            }
+        }, self.interval);
+
     }
 
 
@@ -61,13 +91,21 @@ var AudioManager = function(){
                         self.onRecordingStarted();
                     }
                     self.status = 'recording';
+                    console.log('recording');
+
+//                    self.audio.src = URL.createObjectURL(self.audioStream);
+//                    self.audio.muted = true;
+//                    self.audio.play();
 
                 }, function () {
                 });
             else {
-                self.audio.src = URL.createObjectURL(self.audioStream);
-                self.audio.muted = true;
-                self.audio.play();
+//                self.audio.src = URL.createObjectURL(self.audioStream);
+//                self.audio.muted = true;
+//                self.audio.play();
+                self.status = 'recording';
+                console.log('recording');
+                //console.log('playing');
                 if (self.recorder) {
                     self.recorder.startRecording();
                     if (self.onRecordingStarted !=undefined){
@@ -79,6 +117,7 @@ var AudioManager = function(){
 
             window.isAudio = true;
             this.disabled = true;
+            console.log('this.disabled = true;');
             self.stopRecordingAudioButton.disabled = false;
         }
     }
@@ -98,6 +137,7 @@ var AudioManager = function(){
                         self.onRecordingFinished();
                     }
                     self.status = 'recordingFinished';
+                    console.log('recordingFinished');
                 });
 
         };
