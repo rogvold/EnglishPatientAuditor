@@ -43,6 +43,7 @@ var UserTools = function(){
             Parse.User.logOut();
             window.location.href = self.logoutLink;
         });
+        $('.userName').text(Parse.User.current().get('firstName') + ' ' + Parse.User.current().get('lastName'));
     }
 
     this.checkIfLoggenIn = function(){
@@ -136,6 +137,8 @@ var UserTools = function(){
         self.prepareRecorderBlock();
         self.prepareLogoutLink();
         self.loadAuditorUserExercise();
+        self.initFinishButton();
+
     }
 
 
@@ -160,8 +163,13 @@ var UserTools = function(){
 
                 $('.className').text(result.exercise.get('name'));
                 $('.classDescription').text(result.exercise.get('description'));
+                if (result.exercise.get('status') == 'finished'){
+                    $('#recorderBlock').hide();
+                    $('#exerciseStatus').show();
+                }
                 self.generateExerciseNumbersBlock(self.answerItemSelected);
                 self.answerItemSelected(0);
+                self.updateFinishBlock();
             },
             error: function(error){
                 console.log('error');
@@ -184,10 +192,13 @@ var UserTools = function(){
         for (var i in userAnswers){
             var item = userAnswers[i];
             var isAnswered = (item.get('status') == 'answered');
-            s+= '<span class="col-lg-1 col-sm-1 col-md-1"><a class="numberClickLink ' + ((isAnswered == true) ? 'answered' : '') + '"  href="javascript: void(0);" data-num="' + i +'" >' + (+i + 1) + '</a></span>';
+            s+= '<span class="col-lg-1 col-sm-1 col-md-1 numberClickLinkWrapper"><a class="numberClickLink ' + ((isAnswered == true) ? 'answered' : '') + '"  href="javascript: void(0);" data-num="' + i +'" >' + (+i + 1) + '</a></span>';
         }
         $('#numberBlock').html(s);
         $('.numberClickLink').bind('click', function(){
+            if (self.audioManager.status == 'recording'){
+                return;
+            }
             $('.numberClickLink').removeClass('selected');
             $('.numberClickLink').addClass('selected');
             var num = $(this).attr('data-num');
@@ -216,14 +227,29 @@ var UserTools = function(){
         var vimeoSrc = 'http://player.vimeo.com/video/' + vimeoId +'?title=0&byline=0&portrait=0';
         $('#classIframe').attr('src', vimeoSrc);
         $('#itemTranscript').html(transcript);
+        self.prepareCommentBlock();
         //$('#itemStatus').text(status);
         var ans = self.currentUserAnswers[self.currentExerciseItemNumber];
         $('#myAnswerBlock').hide();
         if (isAnswered){
-            $('#userAnswerAudio').attr('src', 'http://auditor.englishpatient.ru/recorder/uploads/' + ans.get('audioLink') + '.wav');
+            var audLink = 'http://auditor.englishpatient.ru/recorder/uploads/' + ans.get('audioLink') + '.wav';
+            $('#userAnswerAudio').attr('src', audLink);
             $('#myAnswerBlock').show();
             $('a.numberClickLink[data-num="' + (+self.currentExerciseItemNumber ) +'"]').addClass('answered');
+            $('#myAnswerBlock a.downloadLink').attr('href', audLink);
         }
+    }
+
+    this.prepareCommentBlock = function(){
+        $('#itemComment').hide();
+        var item = self.currentUserAnswers[self.currentExerciseItemNumber];
+        var comment = item.get('comment');
+        if (comment == undefined || comment == '' || comment.replace(' ','') == ''){
+            return;
+        }
+        $('p.commentText').html(comment);
+        $('p.commentText').hide();
+        $('#itemComment').show();
     }
 
     this.answerItemSelected = function(num){
@@ -271,6 +297,7 @@ var UserTools = function(){
                     }
                     self.currentUserAnswers[self.currentExerciseItemNumber] = savedAns;
                     self.answerItemSelected(self.currentExerciseItemNumber);
+                    self.updateFinishBlock();
                 });
             });
         });
@@ -280,6 +307,36 @@ var UserTools = function(){
         self.audioManager.onRecordingFinished = function(){
             $('#saveButton').show();
         }
+
+    }
+
+    this.updateFinishBlock = function(){
+        var n = 0;
+        var list = self.currentUserAnswers;
+        for (var i in list){
+            var ans = list[i];
+            if (ans.get('status') == 'answered'){
+                n++;
+            }
+        }
+        if (n == list.length){
+            if (self.currentAuditorUserExercise.get('status') == 'active'){
+                $('#finishExerciseBlock').show();
+            }
+        }
+    }
+
+    this.initFinishButton = function(){
+        $('#finishExerciseButton').bind('click', function(){
+            self.currentAuditorUserExercise.set('status', 'finished');
+            self.currentAuditorUserExercise.save().then(function(){
+                window.location.href = window.location.href;
+                return;
+            });
+        });
+    }
+
+    this.initCommentBlock = function(){
 
     }
 
@@ -294,5 +351,5 @@ function gup(name){
     var regex = new RegExp( regexS );
     var results = regex.exec( window.location.href );
     if( results == null )    return "";
-    else    return results[1];
+    else return results[1];
 }

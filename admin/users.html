@@ -78,7 +78,7 @@
     <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <div class="form-signin" role="form">
-                <h2 class="form-signin-heading">Create new User</h2>
+                <h2 class="form-signin-heading">new user</h2>
 
                 <input type="text" class="form-control" id="firstName" placeholder="First name">
                 <br/>
@@ -88,6 +88,20 @@
                 <br/>
                 <input type="text" id="password" class="form-control" placeholder="Password" required="">
                 <br/>
+
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="userType" id="optionsRadios1" value="user" checked>
+                        user
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="userType" id="optionsRadios2" value="teacher">
+                        teacher
+                    </label>
+                </div>
+
                 <button class="btn btn-lg btn-primary btn-block" type="submit" id="createUserButton" >Create</button>
             </div>
         </div>

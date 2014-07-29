@@ -37,8 +37,7 @@ var AdminTools = function(){
             var password = $('#password').val().trim();
             var firstName = $('#firstName').val().trim();
             var lastName = $('#lastName').val().trim();
-            //todo: change initializing
-            var userType = 'user';
+            var userType = $('input[name=userType]:checked').val();
             self.createUser(email, password, userType, firstName, lastName, function(){
                window.location.href = window.location.href;
             });
@@ -374,10 +373,10 @@ var AdminTools = function(){
         query.equalTo('status', 'active');
         query.ascending('number');
         query.find(function(results){
-            var s ='<tr><td><b>#</b></td><td><b>video</b></td><td><b>transcript</b></td><td><b>command</b></td></tr>';
+            var s ='<tr><td><b>#</b></td><td><b>video</b></td><td><b>transcript</b></td><td><b>comment</b></td><td><b>command</b></td></tr>';
             for (var i in results){
                 var item = results[i];
-                s+= '<tr><td><b>' + item.get('number') +'</b></td><td style="width: 320px;">' + getEmbeddedVideoHtml(item.get('vimeoId'), 320, 220) +'</td><td><textarea data-itemId="' + item.id +'" rows="7" style="width: 320px; font-size: 20px;" class="form-control" >' + item.get('transcript') +'</textarea></td><td><button class="updateTranscriptButton btn btn-info" data-itemId="' + item.id +'" >update transcript</button> <br/><br/><button class="removeExerciseItemButton btn btn-danger" data-itemId="' + item.id +'" >delete</button></td></tr>';
+                s+= '<tr><td><b>' + item.get('number') +'</b></td><td style="width: 320px;">' + getEmbeddedVideoHtml(item.get('vimeoId'), 320, 220) +'<input class="vimeoIdInput" data-itemId="' + item.id + '" type="text" value="' + item.get('vimeoId') +'" /></td><td><textarea data-itemId="' + item.id +'" rows="7" style="" class="form-control transcriptTextarea" >' + item.get('transcript') +'</textarea></td><td><textarea data-itemId="' + item.id +'" rows="7" style=""  data-itemId="' + item.id +'"  class="form-control commentTextarea" >' + (item.get('comment') == undefined ? '' : item.get('comment')) +'</textarea></td><td><button class="updateTranscriptButton btn btn-info" data-itemId="' + item.id +'" >update</button> <br/><br/><button class="removeExerciseItemButton btn btn-danger" data-itemId="' + item.id +'" >delete</button></td></tr>';
             }
             $('#exerciseItemsTable').html(s);
             $('#exerciseItemsTable').show();
@@ -405,15 +404,20 @@ var AdminTools = function(){
 
         $('.updateTranscriptButton').bind('click', function(){
             var itemId = $(this).attr('data-itemId');
-            var transcript = $('textarea[data-itemId="' + itemId + '"]').val().trim();
+            var transcript = $('textarea.transcriptTextarea[data-itemId="' + itemId + '"]').val().trim();
+            var comment = $('textarea.commentTextarea[data-itemId="' + itemId + '"]').val().trim();
+            var vimId = $('input.vimeoIdInput[data-itemId="' + itemId +'"]').val().trim();
+            console.log('comment = ' + comment);
             var relation = self.currentExercise.relation('containsItem');
             var query = new Parse.Query(Parse.Object.extend('AuditorExerciseItem'));
             query.get(itemId, {
                 success: function(item){
                     item.set('transcript', transcript);
+                    item.set('comment', comment);
+                    item.set('vimeoId', vimId);
                     item.save().then(function(){
                         alert('updated');
-                        //window.location.href = window.location.href;
+
                     });
                 }
             });
@@ -426,6 +430,7 @@ var AdminTools = function(){
             var vimeoId = $('#exerciseVimeoId').val().trim();
             console.log('vimeoId = ' + vimeoId);
             var transcript = $('#exerciseTranscript').val().trim();
+            var comment = $('#exerciseComment').val().trim();
             if (vimeoId == undefined || vimeoId == ''){
                 alert('vimeoId is not defined');
                 return;
@@ -434,6 +439,7 @@ var AdminTools = function(){
             var item = new AuditorExerciseItem();
             item.set('vimeoId', vimeoId);
             item.set('transcript', transcript);
+            item.set('comment', comment);
             item.set('status', 'active');
             item.set('number', $('#exerciseItemsTable tr').length);
             item.save().then(function(){
@@ -445,7 +451,6 @@ var AdminTools = function(){
             });
         });
     }
-
 }
 
 function gup(name){
