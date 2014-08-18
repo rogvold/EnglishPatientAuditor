@@ -86,6 +86,7 @@ var AdminTools = function(){
         var user = new Parse.User();
         user.set('email', email);
         user.set('password', password);
+        user.set('userPassword', password);
         user.set('username', email);
         user.set('userType', userType);
         user.set('firstName', firstName);
@@ -317,7 +318,7 @@ var AdminTools = function(){
             ex.set('description', description);
             ex.set('status', 'active');
             ex.save().then(function(){
-                window.location.href = window.location.href;
+                window.location.href = 'exercise.html#addNewItemPanel';
             });
         });
     }
@@ -446,7 +447,8 @@ var AdminTools = function(){
                 var relation = self.currentExercise.relation('containsItem');
                 relation.add(item);
                 self.currentExercise.save().then(function(){
-                    window.location.href = window.location.href;
+                    window.location.href = 'http://' + window.location.hostname + window.location.pathname + '?id=' + gup('id') + '' ;
+//                    window.location.href = 'http://' + window.location.hostname + window.location.pathname + '?id=' + gup('id') + '#addNewItemPanel' ;
                 });
             });
         });

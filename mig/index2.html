@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="../js/jquery.js" ></script>
+
+    <title></title>
+
+    <style type="text/css">
+
+        .round{
+            border-radius: 100px;
+            display: inline-block;
+            width: 180px;
+            height: 180px;
+            opacity: 0.1;
+            background-color: blue;
+            border: 1px solid black;
+        }
+
+        .green{
+            background-color: green;
+        }
+        .yellow{
+            background-color: #ffff00;
+        }
+        .red{
+            background-color: red;
+        }
+
+        .active{
+            opacity: 1;
+        }
+
+        table tr td{
+            width: 33%;
+            text-align: center;
+            padding: 20px;
+        }
+
+        button.migButton{
+            width: 32%;
+            height: 180px;
+            font-size: 60px;
+        }
+
+        #right, #wrong{
+            font-weight: bold;
+        }
+
+        #right{
+            color: green;
+        }
+
+        #wrong{
+            color: red;
+        }
+
+    </style>
+
+</head>
+<body style="background-color: #f5f5f5;">
+
+
+<table style="width: 100%;">
+
+    <tr><td></td><td><span data-num="0" class="round yellow"></span></td><td></td></tr>
+    <tr><td><span class="round red" data-num="5" ></span></td><td></td><td><span data-num="1" class="round green"></span></td></tr>
+    <tr><td><span class="round green" data-num="4" ></span></td><td></td><td><span class="round red" data-num="2" ></span></td></tr>
+    <tr><td></td><td><span class="round yellow" data-num="3" ></span></td><td></td></tr>
+
+</table>
+
+<div style="margin-top: 50px; display: none;" >
+    <button data-color="red" class="btn btn-danger migButton" style="margin-left: 5px;">red</button>
+    <button data-color="yellow" class="btn btn-warning migButton">yellow</button>
+    <button data-color="green" class="btn btn-success migButton">green</button>
+</div>
+
+<div style="text-align: center; font-size: 60px; margin-top: 20px; margin-bottom: 20px; display: none;">
+    Верно: <span id="right">0</span> |
+    Неверно: <span id="wrong" >0</span>
+</div>
+
+<script type="text/javascript">
+
+    right = 0;
+    wrong = 0;
+
+    function initButtons(){
+
+        $('.migButton').click(function(){
+            var col = $(this).attr('data-color');
+            if ($('.round.active').hasClass(col)){
+                right++;
+                $('#right').text(right);
+            }else{
+                wrong++;
+                $('#wrong').text(wrong);
+            }
+            next();
+        });
+    }
+
+    function next(){
+        var num = Math.floor(Math.random() * 6);
+        $('.round').removeClass('active');
+        $('.round[data-num="' + num +'"]').addClass('active');
+    }
+
+    $(function(){
+        next();
+        initButtons();
+
+        setInterval(function(){
+            next();
+        }, 1500);
+
+    });
+
+
+</script>
+
+</body>
+</html>

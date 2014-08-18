@@ -1,16 +1,9 @@
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
 
-    <title>Admin</title>
-
-    <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
@@ -20,11 +13,9 @@
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/parse-1.2.18.min.js"></script>
 
-    <script src="../js/AdminTools.js"></script>
-
+    <script src="../js/TeacherTools.js" ></script>
 
 </head>
-
 <body>
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -54,10 +45,10 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a href="users.html">Users</a></li>
-                <li ><a href="groups.html">Groups</a></li>
-                <li  class="active" ><a href="exercises.html">Exercises</a></li>
-                <li ><a href="checkList.html">Check List</a></li>
+                <li   ><a href="users.html">Users</a></li>
+                <li  ><a href="groups.html">Groups</a></li>
+                <li ><a href="exercises.html">Exercises</a></li>
+                <li class="active" ><a href="checkList.html">Check List</a></li>
                 <li ><a href="materials.html">Materials</a></li>
             </ul>
 
@@ -69,42 +60,25 @@
             <!--some text goes here-->
             <!--</div>-->
 
-            <h2 class="sub-header">Exercises</h2>
-            <div class="table-responsive">
-                <table class="table table-striped" id="exercisesTable" style="display: none;">
-
-                </table>
+            <h2 class="sub-header">Check List</h2>
+            <div class="table-responsive" id="checkListBlock">
+                loading...
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <div class="form-signin" role="form">
-                <h2 class="form-signin-heading">Create new Exercise</h2>
 
-                <input type="text" class="form-control" id="exName" placeholder="Exercise name">
-                <br/>
-                <textarea id="exDescription" placeholder="Exercise description" class="form-control" ></textarea>
-                <br/>
-
-                <button class="btn btn-lg btn-primary btn-block" type="submit" id="createExerciseButton" class="active" >Create</button>
-            </div>
-        </div>
-
-    </div>
 </div>
 
 
 
-<script type="text/javascript">
+<script>
 
     $(function(){
-
-        var aTools = new AdminTools();
-        aTools.init();
-        aTools.prepareExercisesPage();
-
+        tTools = new TeacherTools();
+        tTools.init();
+        tTools.prepareCheckListPage();
     });
+
 
 </script>
 

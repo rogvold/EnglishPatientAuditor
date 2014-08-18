@@ -160,6 +160,7 @@ var UserTools = function(){
                 self.currentUserAnswers = result.userAnswers;
                 self.currentExerciseItemNumber = 0;
                 console.log(self.currentAuditorUserExercise);
+                self.initCommentBlock();
 
                 $('.className').text(result.exercise.get('name'));
                 $('.classDescription').text(result.exercise.get('description'));
@@ -337,7 +338,11 @@ var UserTools = function(){
     }
 
     this.initCommentBlock = function(){
-
+        if (self.currentAuditorUserExercise.get('teacherStatus') != 'checked'){
+            return;
+        }
+        $('#teacherComment').text(self.currentAuditorUserExercise.get('teacherComment'));
+        $('#teacherCommentBlock').show();
     }
 
 

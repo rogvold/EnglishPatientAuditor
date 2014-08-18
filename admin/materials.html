@@ -20,8 +20,7 @@
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/parse-1.2.18.min.js"></script>
 
-    <script src="../js/AdminTools.js"></script>
-
+    <script src="../js/MaterialsTools.js"></script>
 
 </head>
 
@@ -54,11 +53,12 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a href="users.html">Users</a></li>
-                <li  class="active" ><a href="groups.html">Groups</a></li>
+                <li  ><a href="users.html">Users</a></li>
+                <li  ><a href="groups.html">Groups</a></li>
                 <li ><a href="exercises.html">Exercises</a></li>
                 <li ><a href="checkList.html">Check List</a></li>
-                <li ><a href="materials.html">Materials</a></li>
+                <li class="active" ><a href="materials.html">Materials</a></li>
+
             </ul>
 
         </div>
@@ -69,9 +69,9 @@
             <!--some text goes here-->
             <!--</div>-->
 
-            <h2 class="sub-header">Groups</h2>
+            <h2 class="sub-header">Materials</h2>
             <div class="table-responsive">
-                <table class="table table-striped" id="groupsTable" style="display: none;">
+                <table class="table table-striped" id="materialsTable" style="display: none;">
 
                 </table>
             </div>
@@ -80,14 +80,51 @@
     <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <div class="form-signin" role="form">
-                <h2 class="form-signin-heading">Create new User Group</h2>
+                <h2 class="form-signin-heading">new material</h2>
 
-                <input type="text" class="form-control" id="groupName" placeholder="First name">
+                <input type="text" class="form-control" id="name" placeholder="title" required="" >
                 <br/>
-                <textarea id="groupDescription" placeholder="description" class="form-control" ></textarea>
+                <input type="text" class="form-control" id="vimeoId" placeholder="vimeoId" required="" >
+                <br/>
+                <textarea id="text" class="form-control" placeholder="Text" ></textarea>
+                <br/>
+                <textarea id="grammar" class="form-control" placeholder="Grammar" ></textarea>
+                <br/>
+                <textarea  id="vocabulary" class="form-control" placeholder="Vocabulary"  ></textarea>
+                <br/>
+                <textarea  id="generalInfo" class="form-control" placeholder="Background"  ></textarea>
+                <br/>
+                <textarea  id="tags" class="form-control" placeholder="Tags separated by comma" required="" ></textarea>
                 <br/>
 
-                <button class="btn btn-lg btn-primary btn-block" type="submit" id="createGroupButton" class="active" >Create</button>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="application" id="forAuditor" value="user" checked>
+                        для аудитора
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="application" id="forIdioms" value="teacher">
+                        для идиом
+                    </label>
+                </div>
+
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="application" id="forSmacks" value="teacher">
+                        для смаков
+                    </label>
+                </div>
+
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="application" id="forStudents" value="teacher">
+                        для занятий с учениками
+                    </label>
+                </div>
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit" id="createButton" >Create</button>
             </div>
         </div>
 
@@ -100,9 +137,10 @@
 
     $(function(){
 
-        var aTools = new AdminTools();
-        aTools.init();
-        aTools.prepareGroupsPage();
+        var mTools = new MaterialsTools();
+        mTools.init();
+
+
 
     });
 
