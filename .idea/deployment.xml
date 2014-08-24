@@ -2,17 +2,10 @@
 <project version="4">
   <component name="PublishConfigData">
     <serverData>
-      <paths name="auditor.englishpatient.ru">
+      <paths name="EnglishPatientAuditor">
         <serverdata>
           <mappings>
             <mapping deploy="/var/www/auditor.englishpatient.ru" local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="questionary.englishpatient.org">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/var/www/questionary.englishpatient.org" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
