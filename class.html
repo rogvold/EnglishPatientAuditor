@@ -65,7 +65,7 @@
             </ul>
 
         </div>
-        <div class="col-sm-6 col-sm-offset-3 col-md-8 col-md-offset-2 main">
+        <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 main">
             <!--<h1 class="page-header">Dashboard</h1>-->
 
             <!--<div class="row placeholders">-->
@@ -81,28 +81,25 @@
 
 
                 <div class="col-lg-12 col-md-12 col-sm-12" id="auditorContainer" style=" " >
-                    <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: center; padding-left: 0px;" >
-
-                        <iframe style="vertical-align: middle;" id="classIframe"  src="" width="360" height="240" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                        <div>
-                            <br/>
-                            <div class="btn-group">
-                                <button type="button" id="prevButton" class="btn btn-info">  </button>
-                                <button type="button" id="nextButton" class="btn btn-info">  </button>
-                            </div>
-
-                        </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12" style="text-align: center; padding-left: 0px;" >
+                        <iframe style="vertical-align: middle;" id="classIframe"  src="" width="700" height="450" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                     </div>
-                    <div class="col-lg-6 col-sm-6 col-md-6" style="" >
-                        <div style="display: block;">
+                    <div class="col-lg-12 col-sm-12 col-md-12" style="">
+                        <div style="display: block; width: 100%;">
+                            <br/>
                             <div id="numberBlock" style="min-height: 15px;">
-
+                            </div>
+                            <br/>
+                            <div class="btn-group" style="margin-top: 20px; text-align: center; width: 100%;">
+                                <div>
+                                    <button type="button" id="prevButton" class="btn btn-info"> </button>
+                                    <button type="button" id="nextButton" class="btn btn-info"> </button>
+                                </div>
                             </div>
                             <div class="clearfix"></div>
                             <hr/>
 
-
-                            <div id="itemTranscript" style="display: block;" >
+                            <div id="itemTranscript" style="display: block; margin-bottom: 0px;" >
                                 loading...
                             </div>
                             <div id="itemComment" style="display: none;"  >
@@ -115,9 +112,9 @@
                             </div>
 
                             <div style="display: inline-block; width: 100%;">
-                                <div id="recorderBlock" style="height: 80px;">
+                                <div id="recorderBlock" style="height: 80px; margin-top: 20px;">
                                     <div class="inner" style="height: 5em; border: 0px solid black; padding: 5px; width: 220px;">
-                                        <audio id="record-audio" autoplay="" controls="" style="width: 200px; display: block; margin-bottom: 10px;" ></audio>
+                                        <audio id="record-audio" autoplay="" controls="" style="width: 600px; display: block; margin-bottom: 10px;" ></audio>
                                         <button id="recordAudioButton" class="btn btn-danger" >Record</button>
                                         <button id="stopRecordingAudioButton" class="btn btn-default" disabled="">Stop</button>
                                         <button id="recordingTimer" style="display: none;" class="btn btn-default" disabled=""> </button>
@@ -133,10 +130,11 @@
                                 </div>
                             </div>
                             <div style="margin-top: 20px;" >
-                                <div  id="myAnswerBlock" style="display: none; float: right;">
+                                <div  id="myAnswerBlock" style="display: none; float: left;">
                                     <span style="vertical-align: top; font-size: 20px;">Record playback:</span>
-                                    <audio id="userAnswerAudio" style="display: inline-block; width:160px;" controls ></audio>
-                                    <a class="downloadLink" target="_blank" href="javascript; void(0);" style="" >
+                                    <audio id="userAnswerAudio" style="display: inline-block; width:400px;" controls ></audio>
+                                    <br/>
+                                    <a class="downloadLink" target="_blank" href="javascript; void(0);" style="font-size: 20px; float: left; color: dodgerblue;">
                                         скачать
                                     </a>
                                 </div>
