@@ -2,6 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ef6f314-f3d2-4a83-8ea3-6a86855151e8" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/MaterialsTools.js" afterPath="$PROJECT_DIR$/js/MaterialsTools.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/TeacherTools.js" afterPath="$PROJECT_DIR$/js/TeacherTools.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/class.html" afterPath="$PROJECT_DIR$/class.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes.html" afterPath="$PROJECT_DIR$/classes.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="EnglishPatientAuditor.iws" />
@@ -28,18 +35,8 @@
       <file leaf-file-name="class.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/class.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2047" max-vertical-offset="2955">
-              <caret line="141" column="30" selection-start-line="141" selection-start-column="30" selection-end-line="141" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AudioManager.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/AudioManager.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2670" max-vertical-offset="3225">
-              <caret line="134" column="38" selection-start-line="134" selection-start-column="38" selection-end-line="134" selection-end-column="38" />
+            <state vertical-scroll-proportion="-2.8333333" vertical-offset="2017" max-vertical-offset="2925">
+              <caret line="139" column="30" selection-start-line="139" selection-start-column="30" selection-end-line="139" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -55,26 +52,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminTools.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/AdminTools.js">
+      <file leaf-file-name="TeacherTools.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/TeacherTools.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="5408" max-vertical-offset="7125">
-              <caret line="387" column="50" selection-start-line="387" selection-start-column="50" selection-end-line="387" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.22182469" vertical-offset="641" max-vertical-offset="1590">
+              <caret line="51" column="46" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
               <folding>
-                <marker date="1408008876000" expanded="false" signature="14222:14235" placeholder="..." />
+                <marker date="1410849700000" expanded="false" signature="3646:3664" placeholder="..." />
+                <marker date="1410849700000" expanded="true" signature="3831:3849" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TeacherTools.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/TeacherTools.js">
+      <file leaf-file-name="checkList.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/checkList.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8623595" vertical-offset="98" max-vertical-offset="1290">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding>
-                <marker date="1406744998000" expanded="false" signature="2904:2922" placeholder="..." />
-              </folding>
+            <state vertical-scroll-proportion="-5.4583335" vertical-offset="814" max-vertical-offset="1365">
+              <caret line="63" column="38" selection-start-line="63" selection-start-column="38" selection-end-line="63" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MaterialsTools.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/MaterialsTools.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="201" max-vertical-offset="2160">
+              <caret line="27" column="10" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -82,28 +88,8 @@
       <file leaf-file-name="exercise.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/exercise.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1125" max-vertical-offset="1875">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="1125" max-vertical-offset="1875">
               <caret line="75" column="27" selection-start-line="75" selection-start-column="27" selection-end-line="75" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="915">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/users.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1710" max-vertical-offset="2055">
-              <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -112,18 +98,8 @@
       <file leaf-file-name="AuditorUser.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/AuditorUser.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4913" max-vertical-offset="5475">
-              <caret line="169" column="17" selection-start-line="169" selection-start-column="17" selection-end-line="169" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuditorUserAnswerHelper.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/AuditorUserAnswerHelper.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="255">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state vertical-scroll-proportion="-9.461538" vertical-offset="4749" max-vertical-offset="5475">
+              <caret line="333" column="60" selection-start-line="333" selection-start-column="60" selection-end-line="333" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -162,9 +138,7 @@
         <option value="$PROJECT_DIR$/classes.html" />
         <option value="$PROJECT_DIR$/experimantal/player.html" />
         <option value="$PROJECT_DIR$/teacher/checkList.html" />
-        <option value="$PROJECT_DIR$/js/TeacherTools.js" />
         <option value="$PROJECT_DIR$/admin/materials.html" />
-        <option value="$PROJECT_DIR$/js/MaterialsTools.js" />
         <option value="$PROJECT_DIR$/mig/index2.html" />
         <option value="$PROJECT_DIR$/mig/index.html" />
         <option value="$PROJECT_DIR$/css/custom.css" />
@@ -177,6 +151,8 @@
         <option value="$PROJECT_DIR$/admin/exercise.html" />
         <option value="$PROJECT_DIR$/js/AuditorUser.js" />
         <option value="$PROJECT_DIR$/class.html" />
+        <option value="$PROJECT_DIR$/js/MaterialsTools.js" />
+        <option value="$PROJECT_DIR$/js/TeacherTools.js" />
       </list>
     </option>
   </component>
@@ -359,8 +335,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="718" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3402556" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -369,10 +346,9 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23909532" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3290735" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3408" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32838285" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -481,7 +457,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="6435" max-vertical-offset="7110">
           <caret line="429" column="37" selection-start-line="429" selection-start-column="37" selection-end-line="429" selection-end-column="37" />
           <folding>
-            <marker date="1408008876000" expanded="false" signature="14222:14235" placeholder="..." />
+            <marker date="1408008876000" expanded="false" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -550,7 +526,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="7020">
           <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
           <folding>
-            <marker date="1408008876000" expanded="false" signature="14222:14235" placeholder="..." />
+            <marker date="1408008876000" expanded="false" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -603,13 +579,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-86.875" vertical-offset="2205" max-vertical-offset="7245">
           <caret line="286" column="25" selection-start-line="286" selection-start-column="25" selection-end-line="286" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/RecordRTC.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="23100">
-          <caret line="13" column="58" selection-start-line="13" selection-start-column="58" selection-end-line="13" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -669,14 +638,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/MaterialsTools.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1166" max-vertical-offset="2175">
-          <caret line="39" column="165" selection-start-line="39" selection-start-column="165" selection-end-line="39" selection-end-column="165" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mig/index2.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1325" max-vertical-offset="1995">
@@ -712,13 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/checkList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="1365">
-          <caret line="51" column="64" selection-start-line="51" selection-start-column="64" selection-end-line="51" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/exercises.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="753" max-vertical-offset="1770">
@@ -737,8 +691,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="915">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="870">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/checkList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.4583335" vertical-offset="814" max-vertical-offset="1365">
+          <caret line="63" column="38" selection-start-line="63" selection-start-column="38" selection-end-line="63" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/AuditorUserAnswerHelper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28695652" vertical-offset="0" max-vertical-offset="575">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/RecordRTC.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.026690392" vertical-offset="180" max-vertical-offset="23100">
+          <caret line="13" column="58" selection-start-line="13" selection-start-column="58" selection-end-line="13" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/MaterialsTools.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="201" max-vertical-offset="2160">
+          <caret line="27" column="10" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -751,6 +737,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/AudioManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.4956522" vertical-offset="0" max-vertical-offset="3225">
+          <caret line="134" column="38" selection-start-line="134" selection-start-column="38" selection-end-line="134" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/class.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.8333333" vertical-offset="2017" max-vertical-offset="2925">
+          <caret line="139" column="30" selection-start-line="139" selection-start-column="30" selection-end-line="139" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/AdminTools.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36239317" vertical-offset="6298" max-vertical-offset="7125">
+          <caret line="434" column="31" selection-start-line="434" selection-start-column="31" selection-end-line="434" selection-end-column="31" />
+          <folding>
+            <marker date="1408008876000" expanded="false" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/css/custom.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="632" max-vertical-offset="1620">
@@ -759,54 +771,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/class.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2047" max-vertical-offset="2955">
-          <caret line="141" column="30" selection-start-line="141" selection-start-column="30" selection-end-line="141" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/AudioManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2670" max-vertical-offset="3225">
-          <caret line="134" column="38" selection-start-line="134" selection-start-column="38" selection-end-line="134" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/AuditorUserAnswerHelper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/AuditorUser.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4913" max-vertical-offset="5475">
-          <caret line="169" column="17" selection-start-line="169" selection-start-column="17" selection-end-line="169" selection-end-column="17" />
+        <state vertical-scroll-proportion="-9.461538" vertical-offset="4749" max-vertical-offset="5475">
+          <caret line="333" column="60" selection-start-line="333" selection-start-column="60" selection-end-line="333" selection-end-column="60" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/AdminTools.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5408" max-vertical-offset="7125">
-          <caret line="387" column="50" selection-start-line="387" selection-start-column="50" selection-end-line="387" selection-end-column="50" />
-          <folding>
-            <marker date="1408008876000" expanded="false" signature="14222:14235" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/TeacherTools.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8623595" vertical-offset="98" max-vertical-offset="1290">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.22182469" vertical-offset="641" max-vertical-offset="1590">
+          <caret line="51" column="46" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
           <folding>
-            <marker date="1406744998000" expanded="false" signature="2904:2922" placeholder="..." />
+            <marker date="1410849700000" expanded="false" signature="3646:3664" placeholder="..." />
+            <marker date="1410849700000" expanded="true" signature="3831:3849" placeholder="..." />
           </folding>
         </state>
       </provider>

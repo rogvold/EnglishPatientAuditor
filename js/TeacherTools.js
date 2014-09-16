@@ -57,6 +57,24 @@ var TeacherTools = function(){
                 }
             });
         });
+        $('.unfinishButton').bind('click', function(){
+            if (confirm('Are you sure, bro?') == false){
+                return;
+            }
+            var userExId = $(this).attr('data-userExId');
+            var AuditorUserExercise = Parse.Object.extend('AuditorUserExercise');
+            var q = new Parse.Query(AuditorUserExercise);
+            q.get(userExId, {
+                success: function(ex){
+                    ex.set('teacherStatus', 'notChecked');
+                    ex.set('status', 'active');
+                    ex.save().then(function(){
+                        window.location.href = window.location.href;
+                        return;
+                    });
+                }
+            });
+        });
     }
 
     this.generateUncheckedTableExercises = function(item){
@@ -73,6 +91,8 @@ var TeacherTools = function(){
         s+='<textarea placeholder="Comment" class="form-control commentTextarea"  data-userExId="' + item.exercise.id +'" ></textarea>'
         s+='<br/>';
         s+='<div style="text-align: right;" ><button data-userExId="' + item.exercise.id +'"  class="btn btn-success commentButton " >Leave comment</button></div>';
+        s+='<br/>';
+        s+='<div style="text-align: right;" ><button data-userExId="' + item.exercise.id +'"  class="btn btn-danger unfinishButton " >UNFINISH</button></div>';
         return s;
     }
 

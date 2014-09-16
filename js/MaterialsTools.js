@@ -122,7 +122,6 @@ var MaterialsTools = function(){
                  callback();
              });
         });
-
     }
 
     this.getVideoInfo = function(vimeoId, callback){
