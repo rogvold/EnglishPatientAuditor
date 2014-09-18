@@ -79,12 +79,17 @@ var TeacherTools = function(){
 
     this.generateUncheckedTableExercises = function(item){
         var s = '<h3>' + item.user.get('firstName') + ' ' + item.user.get('lastName') + '</h3> <h4>' + item.exercise.get('name') + ' </h4><br/>';
-        s+= '<table class="table" ><tr><th>#</th><th>vimeoId</th><th>transcript</th><th>user answer</th></tr>';
+        s+= '<table class="table" ><tr><th>#</th><th>vimeoId</th><th>transcript</th><th>user answer</th><th>user comment</th></tr>';
         var list = item.answers;
         for (var i in list){
             var ans = list[i];
             var audLink = 'http://auditor.englishpatient.ru/recorder/uploads/' + ans.get('audioLink') + '.wav';
-            s+='<tr><td>' + (1 + +i) +'</td><td><a href="http://vimeo.com/' + ans.get('vimeoId') +'" target="_blank" >' + ans.get('vimeoId') +'</a></td><td>' + ans.get('transcript') +'</td><td><audio controls="" src="' + audLink + '" ></audio></td></tr>';
+            s+='<tr><td>' + (1 + +i) +'</td>' +
+                '<td><a href="http://vimeo.com/' + ans.get('vimeoId') +'" target="_blank" >' + ans.get('vimeoId') +'</a></td>' +
+                '<td>' + ans.get('transcript') +'</td>' +
+                '<td><audio controls="" src="' + audLink + '" ></audio></td>' +
+                '<td>' + ans.get('userComment') +'</td>' +
+                '</tr>';
         }
         s+='</table> <br/>';
 

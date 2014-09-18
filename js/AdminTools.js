@@ -374,10 +374,33 @@ var AdminTools = function(){
         query.equalTo('status', 'active');
         query.ascending('number');
         query.find(function(results){
-            var s ='<tr><td><b>#</b></td><td><b>video</b></td><td><b>transcript</b></td><td><b>comment</b></td><td><b>command</b></td></tr>';
+            var s ='<tr>' +
+                '<td><b>#</b></td>' +
+                '<td><b>video</b></td>' +
+                '<td><b>text</b></td>' +
+                '<td><b>transcript</b></td>' +
+                '<td><b>comment</b></td>' +
+                '<td><b>vocabulary comment</b></td>' +
+                '<td><b>grammar comment</b></td>' +
+                '<td><b>background comment</b></td>' +
+                '<td><b>command</b></td>' +
+                '</tr>';
             for (var i in results){
                 var item = results[i];
-                s+= '<tr><td><b>' + item.get('number') +'</b></td><td style="width: 320px;">' + getEmbeddedVideoHtml(item.get('vimeoId'), 320, 220) +'<input class="vimeoIdInput" data-itemId="' + item.id + '" type="text" value="' + item.get('vimeoId') +'" /></td><td><textarea data-itemId="' + item.id +'" rows="7" style="" class="form-control transcriptTextarea" >' + item.get('transcript') +'</textarea></td><td><textarea data-itemId="' + item.id +'" rows="7" style=""  data-itemId="' + item.id +'"  class="form-control commentTextarea" >' + (item.get('comment') == undefined ? '' : item.get('comment')) +'</textarea></td><td><button class="updateTranscriptButton btn btn-info" data-itemId="' + item.id +'" >update</button> <br/><br/><button class="removeExerciseItemButton btn btn-danger" data-itemId="' + item.id +'" >delete</button></td></tr>';
+                s+= '<tr>' +
+                    '<td><b>' + item.get('number') +'</b></td>' +
+                    '<td style="width: 320px;">' + getEmbeddedVideoHtml(item.get('vimeoId'), item.get('text'), 320, 220) +'<input class="vimeoIdInput" data-itemId="' + item.id + '" type="text" value="' + item.get('vimeoId') +'" /></td>' +
+                    '<td><textarea data-itemId="' + item.id +'" rows="7" cols="30" style="" class="form-control textTextarea" >' + (item.get('text') == undefined ? '' : item.get('text')) +'</textarea></td>' +
+                    '<td><textarea data-itemId="' + item.id +'" rows="7" style="" class="form-control transcriptTextarea" >' + item.get('transcript') +'</textarea></td>' +
+                    '<td><textarea data-itemId="' + item.id +'" rows="7" style=""  data-itemId="' + item.id +'"  class="form-control commentTextarea" >' + (item.get('comment') == undefined ? '' : item.get('comment')) +'</textarea></td>' +
+
+                    '<td><textarea data-itemId="' + item.id +'" rows="7" style=""  data-itemId="' + item.id +'"  class="form-control vocCommentTextarea" >' + (item.get('vocComment') == undefined ? '' : item.get('vocComment')) +'</textarea></td>' +
+                    '<td><textarea data-itemId="' + item.id +'" rows="7" style=""  data-itemId="' + item.id +'"  class="form-control grammarCommentTextarea" >' + (item.get('grammarComment') == undefined ? '' : item.get('grammarComment')) +'</textarea></td>' +
+                    '<td><textarea data-itemId="' + item.id +'" rows="7" style=""  data-itemId="' + item.id +'"  class="form-control backgroundCommentTextarea" >' + (item.get('backgroundComment') == undefined ? '' : item.get('backgroundComment')) +'</textarea></td>' +
+
+
+                    '<td><button class="updateTranscriptButton btn btn-info" data-itemId="' + item.id +'" >update</button> <br/><br/><button class="removeExerciseItemButton btn btn-danger" data-itemId="' + item.id +'" >delete</button></td>' +
+                    '</tr>';
             }
             $('#exerciseItemsTable').html(s);
             $('#exerciseItemsTable').show();
@@ -407,7 +430,22 @@ var AdminTools = function(){
             var itemId = $(this).attr('data-itemId');
             var transcript = $('textarea.transcriptTextarea[data-itemId="' + itemId + '"]').val().trim();
             var comment = $('textarea.commentTextarea[data-itemId="' + itemId + '"]').val().trim();
+
+
+            var vocComment = $('textarea.vocCommentTextarea[data-itemId="' + itemId + '"]').val().trim();
+            var grammarComment = $('textarea.grammarCommentTextarea[data-itemId="' + itemId + '"]').val().trim();
+            var backgroundComment = $('textarea.backgroundCommentTextarea[data-itemId="' + itemId + '"]').val().trim();
+
+
+
             var vimId = $('input.vimeoIdInput[data-itemId="' + itemId +'"]').val().trim();
+            var text = $('textarea.textTextarea[data-itemId="' + itemId + '"]').val().trim();
+
+            if ((text == '' || text == undefined) && (vimId == '' || vimId == undefined)){
+                alert('you should specify vimeoId or text');
+                return;
+            }
+
             console.log('comment = ' + comment);
             var relation = self.currentExercise.relation('containsItem');
             var query = new Parse.Query(Parse.Object.extend('AuditorExerciseItem'));
@@ -415,7 +453,14 @@ var AdminTools = function(){
                 success: function(item){
                     item.set('transcript', transcript);
                     item.set('comment', comment);
+
+                    item.set('vocComment', vocComment);
+                    item.set('grammarComment', grammarComment);
+                    item.set('backgroundComment', backgroundComment);
+
+
                     item.set('vimeoId', vimId);
+                    item.set('text', text);
                     item.save().then(function(){
                         alert('updated');
 
@@ -432,15 +477,32 @@ var AdminTools = function(){
             console.log('vimeoId = ' + vimeoId);
             var transcript = $('#exerciseTranscript').val().trim();
             var comment = $('#exerciseComment').val().trim();
-            if (vimeoId == undefined || vimeoId == ''){
-                alert('vimeoId is not defined');
+
+            var vocComment = $('#vocComment').val().trim();
+            var grammarComment = $('#grammarComment').val().trim();
+            var backgroundComment = $('#backgroundComment').val().trim();
+
+            var text = $('#exerciseText').val().trim();
+            if ((vimeoId == undefined || vimeoId == '') && (text == undefined || text == '')){
+                alert('vimeoId or text should be specified');
                 return;
             }
+
             var AuditorExerciseItem = Parse.Object.extend("AuditorExerciseItem");
             var item = new AuditorExerciseItem();
-            item.set('vimeoId', vimeoId);
+            if ((vimeoId != undefined) && (vimeoId != '')){
+                item.set('vimeoId', vimeoId);
+            }
+            if ((text != undefined) && (text != '')){
+                item.set('text', text);
+            }
             item.set('transcript', transcript);
             item.set('comment', comment);
+
+            item.set('vocComment', vocComment);
+            item.set('grammarComment', grammarComment);
+            item.set('backgroundComment', backgroundComment);
+
             item.set('status', 'active');
             item.set('number', $('#exerciseItemsTable tr').length);
             item.save().then(function(){
@@ -464,7 +526,12 @@ function gup(name){
     else    return results[1];
 }
 
-function getEmbeddedVideoHtml(vimeoId, width, height){
+function getEmbeddedVideoHtml(vimeoId, text, width, height){
+    width = (width == undefined ? 320 : width);
+    height = (height == undefined ? 220 : height);
+    if (vimeoId == undefined || vimeoId == '' || vimeoId == 'undefined'){
+        return '<span style="display: inline-block; width: ' + width +'px; height: ' + height +'px; background-color: black; color: white;">' + text + '</span>';
+    }
     var s = '<iframe style=\'width: ' + width+'px; height: ' + height +'px;\'  src="//player.vimeo.com/video/' + vimeoId + '?title=0&amp;byline=0&amp;portrait=0" width="' + width +'" height="' + height +'" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
     return s;
 }

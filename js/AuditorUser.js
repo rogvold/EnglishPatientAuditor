@@ -138,6 +138,7 @@ var UserTools = function(){
         self.prepareLogoutLink();
         self.loadAuditorUserExercise();
         self.initFinishButton();
+        self.initUserCommentBlock();
 
     }
 
@@ -223,10 +224,35 @@ var UserTools = function(){
         });
     }
 
-    this.updateQuestionBlock = function(vimeoId, transcript, status){
+    this.prepareLeftQuestionBlock = function(vimeoId, text){ // it can be either video or text
+        console.log('prepareLeftQuestionBlock: vimeoId = ' + vimeoId + ' text = ' + text);
+        $('#classIframe').hide();
+        $('#classText').hide();
+        if (vimeoId != undefined && vimeoId != '' && vimeoId != 'undefined'){
+            var vimeoSrc = 'http://player.vimeo.com/video/' + vimeoId +'?title=0&byline=0&portrait=0';
+            $('#classIframe').show();
+            $('#classIframe').attr('src', vimeoSrc);
+            return;
+        }
+        $('#classText').show();
+        $('#classText').html(text);
+
+    }
+
+    this.updateQuestionBlock = function(vimeoId, text, transcript, status){
         var isAnswered = (status == 'answered');
-        var vimeoSrc = 'http://player.vimeo.com/video/' + vimeoId +'?title=0&byline=0&portrait=0';
-        $('#classIframe').attr('src', vimeoSrc);
+
+        //preparing iframe
+//        var vimeoSrc = 'http://player.vimeo.com/video/' + vimeoId +'?title=0&byline=0&portrait=0';
+//        $('#classIframe').attr('src', vimeoSrc);
+
+        // -- end preparing iframe
+
+        console.log('updateQuestionBlock: vimeoId = ' + vimeoId + ' text = ' + text + ' transcript = ' + transcript + ' status = ' + status);
+
+        self.prepareLeftQuestionBlock(vimeoId, text);
+
+
         $('#itemTranscript').html(transcript);
         self.prepareCommentBlock();
         //$('#itemStatus').text(status);
@@ -251,15 +277,49 @@ var UserTools = function(){
         $('p.commentText').html(comment);
         $('p.commentText').hide();
         $('#itemComment').show();
+
+        var cm = '';
+        cm+= (isVoidParseString(item.get("vocComment")) ? '' : (item.get("vocComment") + '<br/> <br/>' ));
+        cm+= (isVoidParseString(item.get("grammarComment")) ? '' : (item.get("grammarComment") + '<br/> <br/>' ));
+        cm+= (isVoidParseString(item.get("backgroundComment")) ? '' : (item.get("backgroundComment") + '<br/> <br/>' ));
+        $('#extraCommentsBlock').hide();
+        if (cm != ''){
+            $('#extraCommentsBlock').show();
+            $('#extraComments').html(cm);
+        }
+        var uc = (isVoidParseString(item.get('userComment')) ? '' : item.get('userComment'));
+        $('#userCommentField').val(uc);
     }
 
+    this.initUserCommentBlock = function(){
+        $('#userCommentSubmitButton').bind('click', function(){
+            var userText = $('#userCommentField').val().trim();
+            var ans = self.currentUserAnswers[self.currentExerciseItemNumber];
+            ans.set('userComment', userText);
+            var link = $(this);
+            link.attr('disabled', true);
+            link.html('saving...');
+            ans.save().then(function(){
+//                alert('your comment has been saved');
+                link.removeAttr('disabled');
+                link.html('Save');
+            });
+            // TODO:
+        });
+    }
+
+
+
     this.answerItemSelected = function(num){
+        console.log('answerItemSelected: num = ' + num);
         if ((self.audioManager.status == 'recording') && (self.controlsEnabled == true)){
             return;
         }
         self.currentExerciseItemNumber = num;
         var ans = self.currentUserAnswers[num];
-        self.updateQuestionBlock(ans.get('vimeoId'), ans.get('transcript'), ans.get('status'));
+
+        console.log(ans);
+        self.updateQuestionBlock(ans.get('vimeoId'), ans.get('text'), ans.get('transcript'), ans.get('status'));
         $('.numberClickLink').removeClass('selected');
         $('.numberClickLink[data-num="' + num +'"]').addClass('selected');
     }
@@ -343,6 +403,7 @@ var UserTools = function(){
         }
         $('#teacherComment').text(self.currentAuditorUserExercise.get('teacherComment'));
         $('#teacherCommentBlock').show();
+
     }
 
 
@@ -357,4 +418,9 @@ function gup(name){
     var results = regex.exec( window.location.href );
     if( results == null )    return "";
     else return results[1];
+}
+
+
+function isVoidParseString(s){
+    return (s == undefined || s == '' || s == 'undefined');
 }

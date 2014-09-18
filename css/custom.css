@@ -97,7 +97,13 @@ span.numberClickLinkWrapper{
     color: lightgoldenrodyellow;
 }
 
-textarea.transcriptTextarea, textarea.commentTextarea{
+textarea.transcriptTextarea, textarea.commentTextarea, textarea.textTextarea, textarea.vocCommentTextarea, textarea.grammarCommentTextarea, textarea.backgroundCommentTextarea{
     width: 220px;
     font-size: 16px;
+}
+
+#classText{
+    font-size: 18px;
+    text-align: justify;
+    margin-top: 60px;
 }
